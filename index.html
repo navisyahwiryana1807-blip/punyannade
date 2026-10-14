@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Gift for You 💕</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Fredoka & Quicksand) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        display: ['Fredoka', 'cursive'],
+                    },
+                    colors: {
+                        theme: {
+                            bg: 'var(--color-bg)',
+                            card: 'var(--color-card)',
+                            accent: 'var(--color-accent)',
+                            hover: 'var(--color-hover)',
+                            text: 'var(--color-text)',
+                            subtext: 'var(--color-subtext)',
+                            border: 'var(--color-border)',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Modern Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 999px;
+        }
+
+        /* Dynamic Theme Variables */
+        :root {
+            --color-bg: #fff0f5;
+            --color-card: #ffffff;
+            --color-accent: #f472b6;
+            --color-hover: #ec4899;
+            --color-text: #4c0519;
+            --color-subtext: #9f1239;
+            --color-border: #fbcfe8;
+        }
+
+        .theme-pink {
+            --color-bg: #fff0f5;
+            --color-card: #ffffff;
+            --color-accent: #f472b6;
+            --color-hover: #ec4899;
+            --color-text: #831843;
+            --color-subtext: #be185d;
+            --color-border: #fbcfe8;
+        }
+
+        .theme-purple {
+            --color-bg: #f3e8ff;
+            --color-card: #ffffff;
+            --color-accent: #c084fc;
+            --color-hover: #a855f7;
+            --color-text: #581c87;
+            --color-subtext: #7e22ce;
+            --color-border: #e9d5ff;
+        }
+
+        .theme-mint {
+            --color-bg: #ecfdf5;
+            --color-card: #ffffff;
+            --color-accent: #34d399;
+            --color-hover: #10b981;
+            --color-text: #064e3b;
+            --color-subtext: #047857;
+            --color-border: #a7f3d0;
+        }
+
+        .theme-sunset {
+            --color-bg: #fff7ed;
+            --color-card: #ffffff;
+            --color-accent: #fb923c;
+            --color-hover: #f97316;
+            --color-text: #7c2d12;
+            --color-subtext: #c2410c;
+            --color-border: #ffedd5;
+        }
+
+        .theme-dark {
+            --color-bg: #111827;
+            --color-card: #1f2937;
+            --color-accent: #f472b6;
+            --color-hover: #ec4899;
+            --color-text: #f9fafb;
+            --color-subtext: #d1d5db;
+            --color-border: #374151;
+        }
+
+        /* Scrapbook Paper Style */
+        .scrapbook-paper {
+            background-color: var(--color-card);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            position: relative;
+        }
+
+        .scrapbook-tape {
+            position: absolute;
+            width: 90px;
+            height: 26px;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+            border: 1px dashed rgba(0, 0, 0, 0.15);
+            transform: rotate(-3deg);
+            top: -12px;
+            left: 50%;
+            margin-left: -45px;
+            z-index: 10;
+        }
+
+        .scrapbook-tape-corner {
+            position: absolute;
+            width: 70px;
+            height: 22px;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+            border: 1px dashed rgba(0, 0, 0, 0.15);
+            transform: rotate(25deg);
+            top: 10px;
+            right: -15px;
+            z-index: 10;
+        }
+
+        .envelope {
+            transition: transform 0.4s ease-in-out;
+            perspective: 1000px;
+        }
+    </style>
+</head>
+<body class="bg-theme-bg text-theme-text font-sans transition-colors duration-500 min-h-screen pb-20 selection:bg-theme-accent selection:text-white" id="appBody">
+
+    <!-- Header / Navbar Controls -->
+    <header class="sticky top-0 z-40 bg-theme-card/80 backdrop-blur-md border-b border-theme-border transition-colors duration-500">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl animate-float">💖</span>
+                <span class="font-display text-xl font-bold text-theme-text tracking-wide" id="navLogo">For My Favorite Person</span>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <!-- Music Toggle Player -->
+                <button id="musicToggleBtn" onclick="toggleAudio()" class="flex items-center space-x-2 bg-theme-bg text-theme-text px-3 py-1.5 rounded-full border border-theme-border shadow-sm hover:scale-105 transition-all">
+                    <i class="fa-solid fa-music text-theme-accent id='musicIcon'"></i>
+                    <span id="musicStatusText" class="text-xs font-semibold hidden sm:inline">Play Lofi</span>
+                </button>
+
+                <!-- Admin / Edit Toggle Button -->
+                <button onclick="toggleEditModal()" class="bg-theme-accent hover:bg-theme-hover text-white font-semibold px-4 py-1.5 rounded-full shadow-md hover:shadow-lg transition-all flex items-center space-x-1.5 text-sm">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Edit Web</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-3xl mx-auto px-4 pt-8 space-y-12">
+
+        <!-- HERO SECTION -->
+        <section class="text-center space-y-4 py-6">
+            <div class="inline-block relative">
+                <div class="scrapbook-tape"></div>
+                <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-4 border-theme-accent p-1 shadow-inner bg-theme-bg mx-auto overflow-hidden">
+                    <img id="displayAvatar" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80" alt="Avatar" class="w-full h-full object-cover rounded-full">
+                </div>
+            </div>
+            
+            <div class="space-y-2">
+                <h1 class="font-display text-3xl sm:text-5xl font-bold text-theme-text" id="displayGreeting">Halo, Sayang! 💕</h1>
+                <p class="text-theme-subtext font-medium text-base sm:text-lg max-w-lg mx-auto" id="displaySubGreeting">Aku buat halaman kecil ini khusus untuk ngerayain semua momen manis kita.</p>
+            </div>
+        </section>
+
+        <!-- SPECIAL DATES & COUNTDOWN SECTION -->
+        <section class="scrapbook-paper rounded-2xl p-6 sm:p-8 border border-theme-border relative">
+            <div class="scrapbook-tape"></div>
+            <div class="text-center space-y-2 mb-6">
+                <h2 class="font-display text-2xl font-bold text-theme-text flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-heart text-theme-accent"></i>
+                    <span id="displayCountdownTitle">Hari Spesial Kita</span>
+                </h2>
+                <p class="text-xs text-theme-subtext" id="displaySpecialDateSub">Menghitung hari-hari indah bersamamu</p>
+            </div>
+
+            <!-- Countdown Timer Display -->
+            <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center max-w-md mx-auto">
+                <div class="bg-theme-bg p-3 rounded-xl border border-theme-border shadow-sm">
+                    <span class="block font-display text-2xl sm:text-3xl font-bold text-theme-accent" id="cdDays">00</span>
+                    <span class="text-xs font-semibold text-theme-subtext uppercase">Hari</span>
+                </div>
+                <div class="bg-theme-bg p-3 rounded-xl border border-theme-border shadow-sm">
+                    <span class="block font-display text-2xl sm:text-3xl font-bold text-theme-accent" id="cdHours">00</span>
+                    <span class="text-xs font-semibold text-theme-subtext uppercase">Jam</span>
+                </div>
+                <div class="bg-theme-bg p-3 rounded-xl border border-theme-border shadow-sm">
+                    <span class="block font-display text-2xl sm:text-3xl font-bold text-theme-accent" id="cdMinutes">00</span>
+                    <span class="text-xs font-semibold text-theme-subtext uppercase">Menit</span>
+                </div>
+                <div class="bg-theme-bg p-3 rounded-xl border border-theme-border shadow-sm">
+                    <span class="block font-display text-2xl sm:text-3xl font-bold text-theme-accent" id="cdSeconds">00</span>
+                    <span class="text-xs font-semibold text-theme-subtext uppercase">Detik</span>
+                </div>
+            </div>
+            
+            <p class="text-center text-xs text-theme-subtext mt-4 italic" id="displayDateNote">Sejak pertama kali kita jadian ❤️</p>
+        </section>
+
+        <!-- INTERACTIVE SECRET LETTER / VAULT SECTION -->
+        <section class="scrapbook-paper rounded-2xl p-6 sm:p-8 border border-theme-border relative">
+            <div class="scrapbook-tape-corner"></div>
+            
+            <div class="text-center space-y-2 mb-6">
+                <h2 class="font-display text-2xl font-bold text-theme-text flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-envelope-open-text text-theme-accent"></i>
+                    <span>Surat Rahasia</span>
+                </h2>
+                <p class="text-xs text-theme-subtext">Ada pesan khusus yang ingin aku sampaikan...</p>
+            </div>
+
+            <!-- Locked Screen State -->
+            <div id="vaultLockedState" class="text-center space-y-4 py-8 bg-theme-bg/60 rounded-xl border border-dashed border-theme-border p-4">
+                <div class="w-16 h-16 bg-theme-card rounded-full flex items-center justify-center mx-auto text-theme-accent text-2xl shadow-sm animate-pulse">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <p class="text-sm font-semibold text-theme-text">Masukkan kata sandi rahasia untuk membuka pesan!</p>
+                
+                <div class="flex justify-center items-center gap-2 max-w-xs mx-auto">
+                    <input type="password" id="vaultPasswordInput" placeholder="Sandi..." class="px-4 py-2 rounded-full border border-theme-border bg-theme-card text-center text-sm focus:outline-none focus:ring-2 focus:ring-theme-accent w-full">
+                    <button onclick="unlockVault()" class="bg-theme-accent hover:bg-theme-hover text-white px-5 py-2 rounded-full font-semibold text-sm shadow-md transition-all">
+                        Buka
+                    </button>
+                </div>
+                <p id="vaultErrorMsg" class="text-xs text-red-500 hidden">Ups, kata sandi salah! Coba tanya aku ya 😜</p>
+            </div>
+
+            <!-- Unlocked Letter State -->
+            <div id="vaultUnlockedState" class="hidden space-y-4 bg-theme-bg/40 p-6 rounded-xl border border-theme-border">
+                <div class="flex justify-between items-center border-b border-theme-border pb-3">
+                    <span class="font-display font-bold text-lg text-theme-accent" id="displayLetterTitle">Untuk Kamu tersayang ❤️</span>
+                    <button onclick="lockVault()" class="text-xs text-theme-subtext hover:underline"><i class="fa-solid fa-lock mr-1"></i> Kunci kembali</button>
+                </div>
+                <div id="displayLetterBody" class="whitespace-pre-line text-sm leading-relaxed text-theme-text font-medium">
+                    <!-- Dynamic Letter Content -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO MEMORY GALLERY SECTION -->
+        <section class="space-y-6">
+            <div class="text-center space-y-1">
+                <h2 class="font-display text-2xl font-bold text-theme-text flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-images text-theme-accent"></i>
+                    <span>Galeri Kenangan</span>
+                </h2>
+                <p class="text-xs text-theme-subtext">Momen-momen manis yang sudah kita lewati</p>
+            </div>
+
+            <!-- Photos Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="photoGalleryGrid">
+                <!-- Dynamic Photos Rendered Here -->
+            </div>
+        </section>
+
+        <!-- LOVE COUPONS SECTION -->
+        <section class="scrapbook-paper rounded-2xl p-6 sm:p-8 border border-theme-border relative">
+            <div class="scrapbook-tape"></div>
+            
+            <div class="text-center space-y-2 mb-6">
+                <h2 class="font-display text-2xl font-bold text-theme-text flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-ticket-simple text-theme-accent"></i>
+                    <span>Kupon Spesial Kamu</span>
+                </h2>
+                <p class="text-xs text-theme-subtext">Bisa kamu tukarkan kapan saja ke aku!</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="couponsContainer">
+                <!-- Dynamic Coupons Rendered Here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 text-center text-xs text-theme-subtext space-y-1 pb-6">
+        <p>Dibuat dengan segenap rasa sayang 💕</p>
+        <p class="opacity-75">Spesial untuk kamu</p>
+    </footer>
+
+    <!-- EDIT / ADMIN MODAL -->
+    <div id="editModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-theme-card border border-theme-border rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-theme-border flex justify-between items-center bg-theme-bg/50">
+                <h3 class="font-display text-lg font-bold text-theme-text flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-theme-accent"></i>
+                    <span>Pengaturan & Custom Web</span>
+                </h3>
+                <button onclick="toggleEditModal()" class="text-theme-subtext hover:text-theme-text text-xl">&times;</button>
+            </div>
+
+            <!-- Modal Body (Scrollable) -->
+            <div class="p-6 space-y-6 overflow-y-auto text-sm">
+                
+                <!-- 1. Theme Color Selector -->
+                <div class="space-y-2">
+                    <label class="font-bold text-theme-text block">1. Pilih Tema Warna</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                        <button onclick="setTheme('pink')" class="p-2 rounded-lg border text-xs font-semibold bg-pink-100 text-pink-800 border-pink-300 hover:scale-105 transition-transform">Soft Pink</button>
+                        <button onclick="setTheme('purple')" class="p-2 rounded-lg border text-xs font-semibold bg-purple-100 text-purple-800 border-purple-300 hover:scale-105 transition-transform">Pastel Purple</button>
+                        <button onclick="setTheme('mint')" class="p-2 rounded-lg border text-xs font-semibold bg-emerald-100 text-emerald-800 border-emerald-300 hover:scale-105 transition-transform">Mint Green</button>
+                        <button onclick="setTheme('sunset')" class="p-2 rounded-lg border text-xs font-semibold bg-orange-100 text-orange-800 border-orange-300 hover:scale-105 transition-transform">Sunset Orange</button>
+                        <button onclick="setTheme('dark')" class="p-2 rounded-lg border text-xs font-semibold bg-gray-800 text-white border-gray-600 hover:scale-105 transition-transform">Dark Mode</button>
+                    </div>
+                </div>
+
+                <!-- 2. Header & Avatar -->
+                <div class="space-y-3 pt-3 border-t border-theme-border">
+                    <label class="font-bold text-theme-text block">2. Teks Menyapa & Foto Profil</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <span class="text-xs text-theme-subtext block mb-1">Sapaan Utama</span>
+                            <input type="text" id="editGreeting" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text">
+                        </div>
+                        <div>
+                            <span class="text-xs text-theme-subtext block mb-1">URL Foto Profil</span>
+                            <input type="text" id="editAvatarUrl" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text" placeholder="https://...">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-xs text-theme-subtext block mb-1">Sub-sapaan / Pesan Singkat</span>
+                        <input type="text" id="editSubGreeting" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text">
+                    </div>
+                </div>
+
+                <!-- 3. Countdown & Special Date -->
+                <div class="space-y-3 pt-3 border-t border-theme-border">
+                    <label class="font-bold text-theme-text block">3. Tanggal Hitung Mundur / Jadian</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <span class="text-xs text-theme-subtext block mb-1">Judul Tanggal</span>
+                            <input type="text" id="editCountdownTitle" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text">
+                        </div>
+                        <div>
+                            <span class="text-xs text-theme-subtext block mb-1">Tanggal & Waktu</span>
+                            <input type="datetime-local" id="editTargetDate" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Secret Letter & Password -->
+                <div class="space-y-3 pt-3 border-t border-theme-border">
+                    <label class="font-bold text-theme-text block">4. Surat Rahasia & Kata Sandi</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <span class="text-xs text-theme-subtext block mb-1">Kata Sandi Buka Surat</span>
+                            <input type="text" id="editVaultPassword" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text">
+                        </div>
+                        <div>
+                            <span class="text-xs text-theme-subtext block mb-1">Judul Surat</span>
+                            <input type="text" id="editLetterTitle" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-xs text-theme-subtext block mb-1">Isi Surat Cinta</span>
+                        <textarea id="editLetterBody" rows="5" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text"></textarea>
+                    </div>
+                </div>
+
+                <!-- 5. Music URL -->
+                <div class="space-y-3 pt-3 border-t border-theme-border">
+                    <label class="font-bold text-theme-text block">5. Musik Lofi Latar Belakang (Audio URL)</label>
+                    <input type="text" id="editAudioUrl" class="w-full p-2 rounded-lg border border-theme-border bg-theme-bg text-theme-text" placeholder="https://domain.com/music.mp3">
+                    <p class="text-xs text-theme-subtext">Bisa pakai link file audio .mp3 eksternal.</p>
+                </div>
+
+                <!-- 6. Photos Management -->
+                <div class="space-y-3 pt-3 border-t border-theme-border">
+                    <div class="flex justify-between items-center">
+                        <label class="font-bold text-theme-text">6. Foto Kenangan (Galeri)</label>
+                        <button onclick="addPhotoField()" class="text-xs bg-theme-accent text-white px-2.5 py-1 rounded-md">+ Tambah Foto</button>
+                    </div>
+                    <div id="editPhotosContainer" class="space-y-2">
+                        <!-- Dynamic Photo Inputs -->
+                    </div>
+                </div>
+
+                <!-- 7. Coupons Management -->
+                <div class="space-y-3 pt-3 border-t border-theme-border">
+                    <div class="flex justify-between items-center">
+                        <label class="font-bold text-theme-text">7. Kupon Cinta</label>
+                        <button onclick="addCouponField()" class="text-xs bg-theme-accent text-white px-2.5 py-1 rounded-md">+ Tambah Kupon</button>
+                    </div>
+                    <div id="editCouponsContainer" class="space-y-2">
+                        <!-- Dynamic Coupon Inputs -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 border-t border-theme-border flex justify-between items-center bg-theme-bg/50">
+                <button onclick="resetToDefaultData()" class="text-xs text-red-500 hover:underline">Reset ke Default</button>
+                <div class="flex space-x-2">
+                    <button onclick="toggleEditModal()" class="px-4 py-2 rounded-lg border border-theme-border text-xs font-semibold text-theme-text">Batal</button>
+                    <button onclick="saveAdminData()" class="px-5 py-2 rounded-lg bg-theme-accent hover:bg-theme-hover text-white text-xs font-semibold shadow-md">Simpan Perubahan</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- AUDIO PLAYER ELEMENT -->
+    <audio id="bgAudio" loop></audio>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Default App Data Structure
+        const defaultData = {
+            theme: 'pink',
+            greeting: 'Halo, Sayang! 💕',
+            subGreeting: 'Aku bikin web kecil ini khusus buat ngerayain semua cerita & kenangan manis kita.',
+            avatarUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80',
+            countdownTitle: 'Hari Jadian Kita',
+            targetDate: '2023-02-14T00:00',
+            vaultPassword: '123',
+            letterTitle: 'Untuk Kamu tersayang ❤️',
+            letterBody: `Hai sayang,\n\nMakasih ya udah selalu ada dan mewarnai hari-hariku. Lewat web sederhana ini, aku cuma mau ingetin kalau kamu adalah salah satu alasan terbaik aku senyum setiap hari.\n\nSemoga kita bisa terus lewati hari-hari bareng, saling support, dan makin sayang satu sama lain.\n\nI love you so much! ✨`,
+            audioUrl: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3',
+            photos: [
+                { url: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&auto=format&fit=crop&q=80', caption: 'Kencan Pertama ☕' },
+                { url: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&auto=format&fit=crop&q=80', caption: 'Jalan-jalan Sore 🌅' },
+                { url: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80', caption: 'Momen Tertawa Bareng 🤭' }
+            ],
+            coupons: [
+                { title: 'Free Hugs 30 Detik', desc: 'Bisa diklaim kapan aja saat kamu butuh pelukan hangat.', redeemed: false },
+                { title: 'Traktir Kopi Favorit', desc: 'Bebas pilih kopi favorit kamu, aku yang bayar!', redeemed: false },
+                { title: 'Bebas Pilih Tempat Makan', desc: 'Kamu yang tentuin menu dinner malam ini tanpa protes.', redeemed: false }
+            ]
+        };
+
+        let appData = {};
+        let isAudioPlaying = false;
+        let countdownInterval = null;
+
+        // Initialize App
+        window.onload = function() {
+            loadStoredData();
+            applyDataToUI();
+            setupCountdown();
+            setupAudio();
+        };
+
+        // Load data from LocalStorage or default
+        function loadStoredData() {
+            const saved = localStorage.getItem('bf_gift_app_data');
+            if (saved) {
+                try {
+                    appData = JSON.parse(saved);
+                } catch(e) {
+                    appData = { ...defaultData };
+                }
+            } else {
+                appData = { ...defaultData };
+            }
+        }
+
+        // Save data to LocalStorage
+        function saveData() {
+            localStorage.setItem('bf_gift_app_data', JSON.stringify(appData));
+        }
+
+        // Apply state data to the DOM
+        function applyDataToUI() {
+            // Apply Theme
+            document.body.className = `bg-theme-bg text-theme-text font-sans transition-colors duration-500 min-h-screen pb-20 selection:bg-theme-accent selection:text-white theme-${appData.theme || 'pink'}`;
+
+            // Apply Text Header
+            document.getElementById('displayGreeting').innerText = appData.greeting;
+            document.getElementById('displaySubGreeting').innerText = appData.subGreeting;
+            document.getElementById('displayAvatar').src = appData.avatarUrl;
+
+            // Apply Countdown Title
+            document.getElementById('displayCountdownTitle').innerText = appData.countdownTitle;
+
+            // Apply Secret Letter
+            document.getElementById('displayLetterTitle').innerText = appData.letterTitle;
+            document.getElementById('displayLetterBody').innerText = appData.letterBody;
+
+            // Render Photos
+            renderGallery();
+
+            // Render Coupons
+            renderCoupons();
+        }
+
+        // Render Photo Gallery
+        function renderGallery() {
+            const container = document.getElementById('photoGalleryGrid');
+            container.innerHTML = '';
+
+            appData.photos.forEach((photo, index) => {
+                const rotation = (index % 2 === 0 ? 'rotate-1' : '-rotate-1');
+                const card = document.createElement('div');
+                card.className = `scrapbook-paper rounded-xl p-3 border border-theme-border shadow-sm transform hover:scale-105 hover:rotate-0 transition-all duration-300 ${rotation}`;
+                card.innerHTML = `
+                    <div class="scrapbook-tape"></div>
+                    <div class="h-48 rounded-lg overflow-hidden mb-3 bg-theme-bg">
+                        <img src="${photo.url}" alt="Memory" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x300/fbcfe8/be185d?text=Foto+Kenangan'">
+                    </div>
+                    <p class="text-center font-display font-semibold text-sm text-theme-text">${photo.caption}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Render Love Coupons
+        function renderCoupons() {
+            const container = document.getElementById('couponsContainer');
+            container.innerHTML = '';
+
+            appData.coupons.forEach((coupon, index) => {
+                const card = document.createElement('div');
+                const isRedeemed = coupon.redeemed;
+
+                card.className = `p-4 rounded-xl border ${isRedeemed ? 'bg-theme-bg/40 border-theme-border opacity-60' : 'bg-theme-card border-theme-border shadow-sm'} flex justify-between items-center transition-all`;
+                card.innerHTML = `
+                    <div class="space-y-1 max-w-[70%]">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid ${isRedeemed ? 'fa-circle-check text-green-500' : 'fa-ticket text-theme-accent'} text-sm"></i>
+                            <h4 class="font-display font-bold text-sm ${isRedeemed ? 'line-through text-theme-subtext' : 'text-theme-text'}">${coupon.title}</h4>
+                        </div>
+                        <p class="text-xs text-theme-subtext leading-relaxed">${coupon.desc}</p>
+                    </div>
+                    <button onclick="toggleRedeemCoupon(${index})" class="px-3 py-1.5 rounded-full text-xs font-bold transition-all ${isRedeemed ? 'bg-gray-200 text-gray-600 hover:bg-gray-300' : 'bg-theme-accent hover:bg-theme-hover text-white shadow'}">
+                        ${isRedeemed ? 'Terselip' : 'Klaim'}
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Toggle Coupon Redeem State
+        function toggleRedeemCoupon(index) {
+            appData.coupons[index].redeemed = !appData.coupons[index].redeemed;
+            saveData();
+            renderCoupons();
+        }
+
+        // Setup Countdown Timer
+        function setupCountdown() {
+            if (countdownInterval) clearInterval(countdownInterval);
+
+            function updateTimer() {
+                const target = new Date(appData.targetDate).getTime();
+                const now = new Date().getTime();
+                const diff = target - now;
+
+                // Handle both future target & past jadian date count
+                const absoluteDiff = Math.abs(diff);
+
+                const days = Math.floor(absoluteDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((absoluteDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((absoluteDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((absoluteDiff % (1000 * 60)) / 1000);
+
+                document.getElementById('cdDays').innerText = String(days).padStart(2, '0');
+                document.getElementById('cdHours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('cdMinutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('cdSeconds').innerText = String(seconds).padStart(2, '0');
+
+                const noteEl = document.getElementById('displayDateNote');
+                if (diff < 0) {
+                    noteEl.innerText = 'Telah berlalu dengan penuh kebahagiaan bersama ❤️';
+                } else {
+                    noteEl.innerText = 'Menuju momen istimewa berikutnya ✨';
+                }
+            }
+
+            updateTimer();
+            countdownInterval = setInterval(updateTimer, 1000);
+        }
+
+        // Vault Secret Password Unlock Logic
+        function unlockVault() {
+            const input = document.getElementById('vaultPasswordInput').value;
+            const errorMsg = document.getElementById('vaultErrorMsg');
+
+            if (input === appData.vaultPassword) {
+                document.getElementById('vaultLockedState').classList.add('hidden');
+                document.getElementById('vaultUnlockedState').classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+            } else {
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
+        function lockVault() {
+            document.getElementById('vaultLockedState').classList.remove('hidden');
+            document.getElementById('vaultUnlockedState').classList.add('hidden');
+            document.getElementById('vaultPasswordInput').value = '';
+        }
+
+        // Audio Player Setup & Toggle
+        function setupAudio() {
+            const audio = document.getElementById('bgAudio');
+            if (appData.audioUrl) {
+                audio.src = appData.audioUrl;
+            }
+        }
+
+        function toggleAudio() {
+            const audio = document.getElementById('bgAudio');
+            const statusText = document.getElementById('musicStatusText');
+
+            if (isAudioPlaying) {
+                audio.pause();
+                isAudioPlaying = false;
+                statusText.innerText = 'Play Lofi';
+            } else {
+                audio.play().then(() => {
+                    isAudioPlaying = true;
+                    statusText.innerText = 'Playing...';
+                }).catch(() => {
+                    alert('Gagal memutar audio. Cek kembali URL audio di menu Edit.');
+                });
+            }
+        }
+
+        // ADMIN / EDIT MODAL FUNCTIONS
+        function toggleEditModal() {
+            const modal = document.getElementById('editModal');
+            if (modal.classList.contains('hidden')) {
+                // Populate Modal Inputs with current data
+                document.getElementById('editGreeting').value = appData.greeting;
+                document.getElementById('editSubGreeting').value = appData.subGreeting;
+                document.getElementById('editAvatarUrl').value = appData.avatarUrl;
+                document.getElementById('editCountdownTitle').value = appData.countdownTitle;
+                document.getElementById('editTargetDate').value = appData.targetDate;
+                document.getElementById('editVaultPassword').value = appData.vaultPassword;
+                document.getElementById('editLetterTitle').value = appData.letterTitle;
+                document.getElementById('editLetterBody').value = appData.letterBody;
+                document.getElementById('editAudioUrl').value = appData.audioUrl || '';
+
+                renderEditPhotosList();
+                renderEditCouponsList();
+
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Theme Set Helper inside modal
+        function setTheme(themeName) {
+            appData.theme = themeName;
+            document.body.className = `bg-theme-bg text-theme-text font-sans transition-colors duration-500 min-h-screen pb-20 selection:bg-theme-accent selection:text-white theme-${themeName}`;
+        }
+
+        // Render Photo Inputs in Admin Modal
+        function renderEditPhotosList() {
+            const container = document.getElementById('editPhotosContainer');
+            container.innerHTML = '';
+
+            appData.photos.forEach((photo, index) => {
+                const item = document.createElement('div');
+                item.className = 'p-2 rounded-lg border border-theme-border bg-theme-bg flex items-center gap-2';
+                item.innerHTML = `
+                    <input type="text" value="${photo.url}" placeholder="URL Foto" onchange="appData.photos[${index}].url = this.value" class="w-1/2 p-1 text-xs border border-theme-border rounded bg-theme-card">
+                    <input type="text" value="${photo.caption}" placeholder="Keterangan" onchange="appData.photos[${index}].caption = this.value" class="w-1/2 p-1 text-xs border border-theme-border rounded bg-theme-card">
+                    <button onclick="removePhotoField(${index})" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function addPhotoField() {
+            appData.photos.push({ url: '', caption: 'Momen Baru ❤️' });
+            renderEditPhotosList();
+        }
+
+        function removePhotoField(index) {
+            appData.photos.splice(index, 1);
+            renderEditPhotosList();
+        }
+
+        // Render Coupon Inputs in Admin Modal
+        function renderEditCouponsList() {
+            const container = document.getElementById('editCouponsContainer');
+            container.innerHTML = '';
+
+            appData.coupons.forEach((coupon, index) => {
+                const item = document.createElement('div');
+                item.className = 'p-2 rounded-lg border border-theme-border bg-theme-bg flex items-center gap-2';
+                item.innerHTML = `
+                    <input type="text" value="${coupon.title}" placeholder="Judul Kupon" onchange="appData.coupons[${index}].title = this.value" class="w-1/3 p-1 text-xs border border-theme-border rounded bg-theme-card">
+                    <input type="text" value="${coupon.desc}" placeholder="Deskripsi" onchange="appData.coupons[${index}].desc = this.value" class="w-1/2 p-1 text-xs border border-theme-border rounded bg-theme-card">
+                    <button onclick="removeCouponField(${index})" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function addCouponField() {
+            appData.coupons.push({ title: 'Kupon Baru', desc: 'Deskripsi kupon istimewa.', redeemed: false });
+            renderEditCouponsList();
+        }
+
+        function removeCouponField(index) {
+            appData.coupons.splice(index, 1);
+            renderEditCouponsList();
+        }
+
+        // Save Admin Data
+        function saveAdminData() {
+            appData.greeting = document.getElementById('editGreeting').value;
+            appData.subGreeting = document.getElementById('editSubGreeting').value;
+            appData.avatarUrl = document.getElementById('editAvatarUrl').value;
+            appData.countdownTitle = document.getElementById('editCountdownTitle').value;
+            appData.targetDate = document.getElementById('editTargetDate').value;
+            appData.vaultPassword = document.getElementById('editVaultPassword').value;
+            appData.letterTitle = document.getElementById('editLetterTitle').value;
+            appData.letterBody = document.getElementById('editLetterBody').value;
+            appData.audioUrl = document.getElementById('editAudioUrl').value;
+
+            saveData();
+            applyDataToUI();
+            setupCountdown();
+            setupAudio();
+            toggleEditModal();
+        }
+
+        // Reset Data
+        function resetToDefaultData() {
+            if (confirm('Apakah kamu yakin ingin mengembalikan semua isi web ke setelan awal?')) {
+                appData = JSON.parse(JSON.stringify(defaultData));
+                saveData();
+                applyDataToUI();
+                setupCountdown();
+                setupAudio();
+                toggleEditModal();
+            }
+        }
+    </script>
+</body>
+</html>
